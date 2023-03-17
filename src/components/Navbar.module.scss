@@ -1,0 +1,31 @@
+.navbar {
+  @apply flex items-center justify-between;
+
+  > .menu {
+    > svg {
+      @apply w-5 fill-yellow;
+    }
+  }
+
+  > .geo {
+    @apply flex items-center;
+
+    > svg:first-child {
+      @apply fill-white w-6 h-6;
+    }
+    > svg:last-child {
+      @apply fill-gray w-4 h-4 transition-colors cursor-pointer;
+
+      &:hover {
+        @apply fill-white;
+      }
+    }
+
+    > .city {
+      @apply font-semibold text-white mx-2;
+    }
+    > .country {
+      @apply text-gray mr-1;
+    }
+  }
+}
