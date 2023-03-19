@@ -1,23 +1,31 @@
 .navbar {
   @apply flex items-center justify-between;
 
-  > .menu {
+  > .logo {
     > svg {
       @apply w-5 fill-yellow;
     }
   }
 
   > .geo {
-    @apply flex items-center;
+    @apply flex items-center relative;
 
-    > svg:first-child {
+    > svg {
       @apply fill-white w-6 h-6;
     }
-    > svg:last-child {
-      @apply fill-gray w-4 h-4 transition-colors cursor-pointer;
 
-      &:hover {
-        @apply fill-white;
+    > .button {
+      > svg {
+        @apply fill-gray w-4 h-4 transition-all;
+
+        &:hover {
+          @apply fill-white;
+        }
+      }
+      &.active {
+        > svg {
+          @apply rotate-180;
+        }
       }
     }
 
@@ -26,6 +34,52 @@
     }
     > .country {
       @apply text-gray mr-1;
+    }
+    > .form {
+      @apply absolute top-[130%] flex w-[120%] border-borderColor border-2 rounded-full px-3 py-1 transition-all opacity-0 -translate-y-2;
+
+      &.active {
+        @apply translate-y-0 opacity-100;
+      }
+      > .search {
+        @apply bg-transparent  outline-none text-white text-sm placeholder:text-gray  placeholder:text-sm caret-gray;
+      }
+
+      > button {
+        @apply mr-2;
+
+        > svg {
+          @apply fill-gray transition-colors;
+        }
+
+        &:hover {
+          > svg {
+            @apply fill-white;
+          }
+        }
+      }
+    }
+  }
+
+  > .toggleTheme {
+    > .label {
+      @apply w-[60px] h-[30px] p-1 flex items-center justify-between bg-middleBlue border border-borderColor rounded-full relative  cursor-pointer z-0;
+
+      &::after {
+        @apply absolute h-[22px] w-[22px] top-[3px] -translate-x-[2px] bg-yellow rounded-full transition-transform;
+        content: '';
+      }
+      &.active::after {
+        @apply translate-x-[30px];
+      }
+
+      > input {
+        @apply absolute invisible opacity-0 w-full h-full;
+      }
+
+      > svg {
+        @apply w-4 h-4 z-10;
+      }
     }
   }
 }
