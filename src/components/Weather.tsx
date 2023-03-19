@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import CurrentWeather from './CurrentWeather';
 import Date from './Date';
 import Navbar from './Navbar';
 
@@ -9,6 +10,7 @@ const Weather: FC = () => {
     <div className={styles.weather}>
       <Navbar />
       <Date />
+      <CurrentWeather />
     </div>
   );
 };
