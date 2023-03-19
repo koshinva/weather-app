@@ -1,0 +1,11 @@
+.date {
+  @apply flex flex-col mt-8 mb-3 items-center text-white;
+
+  > .day {
+    @apply font-bold text-lg mb-1;
+  }
+
+  > .week-day {
+    @apply text-sm text-gray;
+  }
+}
