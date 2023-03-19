@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import cn from 'classnames';
-import { FaSun, FaCloud, FaSearchLocation, FaAngleDown, FaMoon, FaSearch } from 'react-icons/fa';
+import { FaSun, FaCloud, FaAngleDown, FaMoon, FaSearch, FaMapMarkerAlt } from 'react-icons/fa';
 
 import styles from './Navbar.module.scss';
 
@@ -18,11 +18,11 @@ const Navbar: FC = () => {
         <FaCloud />
       </div>
       <div className={styles.geo}>
-        <FaSearchLocation />
+        <FaMapMarkerAlt />
         <h2 className={styles.city}>Arak,</h2>
         <p className={styles.country}>Markazi</p>
         <button
-          className={cn(styles.button, {[styles.active]: isOpenSearch})}
+          className={cn(styles.button, { [styles.active]: isOpenSearch })}
           type="button"
           onClick={() => setOpenSearch((prev) => !prev)}
         >
