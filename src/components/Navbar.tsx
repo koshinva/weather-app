@@ -1,15 +1,18 @@
-import { FC, useState } from 'react';
+import { FC, useState} from 'react';
 import cn from 'classnames';
+
 import { FaSun, FaCloud, FaAngleDown, FaMoon, FaSearch, FaMapMarkerAlt } from 'react-icons/fa';
 
 import styles from './Navbar.module.scss';
+import { useTypedSelector } from 'hooks/useTypedSelector';
 
 const Navbar: FC = () => {
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
   const [isOpenSearch, setOpenSearch] = useState<boolean>(false);
+  const {currentCity, currentCountry} = useTypedSelector((state) => state.weather)
 
   const handleChangeTheme = () => {
-     setDarkTheme((prev) => !prev);
+    setDarkTheme((prev) => !prev);
   };
 
   return (
@@ -19,8 +22,8 @@ const Navbar: FC = () => {
       </div>
       <div className={styles.geo}>
         <FaMapMarkerAlt />
-        <h2 className={styles.city}>Arak,</h2>
-        <p className={styles.country}>Markazi</p>
+        <h2 className={styles.city}>{currentCity},</h2>
+        <p className={styles.country}>{currentCountry}</p>
         <button
           className={cn(styles.button, { [styles.active]: isOpenSearch })}
           type="button"

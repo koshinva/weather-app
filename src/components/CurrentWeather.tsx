@@ -1,3 +1,4 @@
+import { useTypedSelector } from 'hooks/useTypedSelector';
 import { FC } from 'react'
 import { FaCloudRain, FaTint, FaWind } from 'react-icons/fa';
 import {HiSun, HiCloud} from 'react-icons/hi'
@@ -5,6 +6,8 @@ import {HiSun, HiCloud} from 'react-icons/hi'
 import styles from './CurrentWeather.module.scss'
 
 const CurrentWeather: FC = () => {
+  const {currentWeather} = useTypedSelector((state) => state.weather)
+
   return (
     <div className={styles.current}>
       <div className={styles.icons}>
