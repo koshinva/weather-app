@@ -1,0 +1,40 @@
+.form {
+  @apply absolute top-[130%] flex w-[120%] border-borderColor border-2 rounded-full px-3 py-1 transition-all opacity-0 -translate-y-2;
+
+  &.active {
+    @apply translate-y-0 opacity-100;
+  }
+  > .search {
+    @apply bg-transparent w-full outline-none text-white text-sm placeholder:text-gray  placeholder:text-sm caret-gray;
+  }
+
+  > button {
+    @apply mr-2;
+
+    > svg {
+      @apply fill-gray transition-colors;
+    }
+
+    &:hover {
+      > svg {
+        @apply fill-white;
+      }
+    }
+  }
+  > .list {
+    @apply absolute w-[150px] left-[110%] -top-[50%] bg-middleBlue p-2 rounded-md shadow-md shadow-borderColor text-white;
+    content: '';
+
+    > .item {
+      @apply text-sm pb-1 hover:text-yellow hover:shadow-lg transition-colors;
+
+      > .button {
+        @apply cursor-pointer w-full text-left;
+      }
+    }
+    > .item:not(:last-child) {
+      @apply border-b border-gray;
+    }
+  }
+
+}

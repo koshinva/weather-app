@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IInitialState } from 'types';
-import { getWeather } from './weatherActions';
+import { getGeocoding, getWeather } from './weatherActions';
 
 const initialState: IInitialState = {
+  geocodingList: [],
+  selectedGeocoding: null,
   currentCity: '',
   currentCountry: '',
   currentWeather: null,
@@ -14,9 +16,24 @@ const initialState: IInitialState = {
 const weatherSlice = createSlice({
   name: 'weather',
   initialState,
-  reducers: {},
+  reducers: {
+    selectGeocoding(state, { payload }) {
+      state.selectedGeocoding = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
+      .addCase(getGeocoding.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getGeocoding.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.geocodingList = payload;
+      })
+      .addCase(getGeocoding.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
       .addCase(getWeather.pending, (state) => {
         state.isLoading = true;
       })
@@ -31,12 +48,12 @@ const weatherSlice = createSlice({
         };
         let date = new Date();
         const currentTimezoneOffset = date.getTimezoneOffset();
-        date.setMinutes(date.getMinutes() - currentTimezoneOffset)
+        date.setMinutes(date.getMinutes() - currentTimezoneOffset);
         date.setSeconds(date.getSeconds() - payload.timezone);
         state.date = date.toLocaleDateString('en-US', {
           weekday: 'short',
           day: 'numeric',
-          month: 'long'
+          month: 'long',
         });
       })
       .addCase(getWeather.rejected, (state, { payload }) => {
@@ -45,5 +62,7 @@ const weatherSlice = createSlice({
       });
   },
 });
+
+export const { selectGeocoding } = weatherSlice.actions;
 
 export default weatherSlice.reducer;
