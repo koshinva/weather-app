@@ -1,0 +1,30 @@
+.next {
+  @apply my-4 text-white;
+  
+  > .blocks {
+    @apply flex items-center justify-evenly;
+
+    > .block {
+      @apply flex flex-col items-center;
+
+      > .icon {
+        @apply w-6 h-6 mb-2;
+      }
+      > .temperature {
+        @apply text-gray mb-1;
+      }
+    }
+  }
+
+  > .times {
+    @apply flex items-center justify-evenly;
+
+    > .time {
+      @apply text-sm;
+
+      &:first-child {
+        @apply font-semibold;
+      }
+    }
+  }
+}

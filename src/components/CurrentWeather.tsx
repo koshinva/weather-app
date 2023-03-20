@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { FaCloud, FaCloudRain, FaTint, FaWind } from 'react-icons/fa';
+import { FaCloudRain, FaTint, FaWind } from 'react-icons/fa';
 import {HiSun, HiCloud} from 'react-icons/hi'
 
 import styles from './CurrentWeather.module.scss'
