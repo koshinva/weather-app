@@ -16,13 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./src/",
-    "paths": {
-      "@/components/*": ["components/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/store/*": ["store/*"],
-      "@/utils/*": ["utils/*"],
-      "@/assets/*": ["assets/*"]
-    }
   },
   "include": ["react-app-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
