@@ -15,6 +15,19 @@ module.exports = {
         borderColor: '#232D3E',
         gray: '#7C7F85',
       },
+      keyframes: {
+        roller: {
+          from: {
+            transform: 'rotate(0deg)',
+          },
+          to: {
+            transform: 'rotate(360deg)',
+          },
+        },
+      },
+      animation: {
+        roller: 'roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite',
+      },
     },
   },
   plugins: [],

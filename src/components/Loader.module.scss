@@ -1,0 +1,75 @@
+.loader {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  content: '';
+
+  > .loader-body {
+    @apply inline-block relative w-20 h-20;
+
+    > div {
+      @apply animate-roller;
+      transform-origin: 40px 40px;
+
+      &:after {
+        @apply block absolute w-2 h-2 rounded-full bg-white;
+        content: '';
+        margin: -4px 0 0 -4px;
+      }
+      &:nth-child(1) {
+        animation-delay: -0.036s;
+
+        &:after {
+          @apply top-[63px] left-[63px];
+        }
+      }
+      &:nth-child(2) {
+        animation-delay: -0.072s;
+
+        &:after {
+          @apply top-[68px] left-[56px];
+        }
+      }
+      &:nth-child(3) {
+        animation-delay: -0.108s;
+
+        &:after {
+          @apply top-[71px] left-[48px];
+        }
+      }
+      &:nth-child(4) {
+        animation-delay: -0.144s;
+
+        &:after {
+          @apply top-[72px] left-[40px];
+        }
+      }
+      &:nth-child(5) {
+        animation-delay: -0.18s;
+
+        &:after {
+          @apply top-[71px] left-[32px];
+        }
+      }
+      &:nth-child(6) {
+        animation-delay: -0.216s;
+
+        &:after {
+          @apply top-[68px] left-[24px];
+        }
+      }
+      &:nth-child(7) {
+        animation-delay: -0.252s;
+
+        &:after {
+          @apply top-[63px] left-[17px];
+        }
+      }
+      &:nth-child(8) {
+        animation-delay: -0.288s;
+
+        &:after {
+          @apply top-[56px] left-[12px];
+        }
+      }
+    }
+  }
+}

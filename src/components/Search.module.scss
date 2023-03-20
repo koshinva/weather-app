@@ -35,6 +35,10 @@
     > .item:not(:last-child) {
       @apply border-b border-gray;
     }
+
+    > .loading {
+      @apply font-bold text-sm block p-4;
+    }
   }
 
 }

@@ -19,7 +19,7 @@ const Search: FC<ISearchProps> = ({ isOpenSearch, setOpenSearch }) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const { getGeocoding, selectGeocoding, getWeather, clearGeocodingList } = useActions();
-  const { geocodingList } = useTypedSelector((state) => state.weather);
+  const { geocodingList, isLoading } = useTypedSelector((state) => state.weather);
 
   const debouncedSearch = useDebounce(searchTerm, 500);
 
@@ -66,15 +66,19 @@ const Search: FC<ISearchProps> = ({ isOpenSearch, setOpenSearch }) => {
       />
       {geocodingList.length && searchTerm ? (
         <ul className={styles.list}>
-          {geocodingList.map((geo) => (
-            <li className={styles.item} key={geo.lat}>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => handleClickGeocoding(geo)}
-              >{`${geo.name}, ${geo.country}`}</button>
-            </li>
-          ))}
+          {isLoading.geocoding ? (
+            <p className={styles.loading}>Loading...</p>
+          ) : (
+            geocodingList.map((geo) => (
+              <li className={styles.item} key={geo.lat}>
+                <button
+                  className={styles.button}
+                  type="button"
+                  onClick={() => handleClickGeocoding(geo)}
+                >{`${geo.name}, ${geo.country}`}</button>
+              </li>
+            ))
+          )}
         </ul>
       ) : (
         <></>

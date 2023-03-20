@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { FC } from 'react';
 import CurrentWeather from './CurrentWeather';
 import Date from './Date';
+import Loader from './Loader';
 import Navbar from './Navbar';
 import NextFourHours from './NextFourHours';
 
@@ -20,7 +21,7 @@ const Weather: FC = () => {
   return (
     <div className={styles.weather}>
       <Navbar />
-      {isLoading && <p>Loading...</p>}
+      {isLoading.weather && <Loader />}
       {currentWeather && (
         <>
           <Date />

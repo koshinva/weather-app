@@ -6,7 +6,7 @@ const initialState: IInitialState = {
   geocodingList: [],
   selectedGeocoding: { name: 'Moscow', country: 'RU', lat: 55.7504461, lon: 37.6174943 },
   currentWeather: null,
-  isLoading: false,
+  isLoading: { geocoding: false, weather: false },
   error: null,
 };
 
@@ -19,30 +19,30 @@ const weatherSlice = createSlice({
     },
     clearGeocodingList(state) {
       state.geocodingList = [];
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getGeocoding.pending, (state) => {
-        state.isLoading = true;
+        state.isLoading.geocoding = true;
       })
       .addCase(getGeocoding.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoading.geocoding = false;
         state.geocodingList = payload;
       })
       .addCase(getGeocoding.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoading.geocoding = false;
         state.error = payload;
       })
       .addCase(getWeather.pending, (state) => {
-        state.isLoading = true;
+        state.isLoading.weather = true;
       })
       .addCase(getWeather.fulfilled, (state, { payload }: { payload: IWeatherResponse }) => {
-        state.isLoading = false;
+        state.isLoading.weather = false;
         state.currentWeather = payload;
       })
       .addCase(getWeather.rejected, (state, { payload }) => {
-        state.isLoading = false;
+        state.isLoading.weather = false;
         state.error = payload;
       });
   },
