@@ -10,4 +10,5 @@ export interface IWeatherResponse {
   humidity: number;
   windSpeed: number;
   timezone: number;
+  clouds: number;
 }

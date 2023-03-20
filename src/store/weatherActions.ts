@@ -7,6 +7,7 @@ export const getWeather = createAsyncThunk<IWeatherResponse, string>(
   async function (location, { rejectWithValue }) {
     try {
       const response = await axiosCurrentWeather.get('', { params: { q: location } });
+         
       const {
         name,
         sys: { country },
@@ -14,6 +15,7 @@ export const getWeather = createAsyncThunk<IWeatherResponse, string>(
         main: { temp, pressure, temp_min, temp_max, humidity },
         wind: { speed: windSpeed },
         timezone,
+        clouds: { all: clouds }
       } = response.data;
 
       const { main, description } = weather[0];
@@ -30,6 +32,7 @@ export const getWeather = createAsyncThunk<IWeatherResponse, string>(
         main,
         description,
         timezone,
+        clouds
       };
 
       console.log(data);
