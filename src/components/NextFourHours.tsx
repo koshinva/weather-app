@@ -24,18 +24,18 @@ const NextFourHours: FC = () => {
           <p className={styles.temperature}>23&#xB0;</p>
         </div>
       </div>
-      <svg width="752" height="60" xmlns="http://www.w3.org/2000/svg">
+      <svg width="752" height="60">
         <path
           d={'M0 30 130 25, 295 30, 455 20, 610 15, 752 30'}
           stroke="#7C7F85"
           fill="transparent"
-          stroke-width="2"
+          strokeWidth="2"
         />
 
-        <circle cx="130" cy="25" r="4" stroke="#F5D540" fill="#151D2A" stroke-width="1" />
-        <circle cx="295" cy="30" r="4" stroke="#F5D540" fill="#151D2A" stroke-width="1" />
-        <circle cx="455" cy="20" r="4" stroke="#F5D540" fill="#151D2A" stroke-width="1" />
-        <circle cx="610" cy="15" r="4" stroke="#F5D540" fill="#151D2A" stroke-width="1" />
+        <circle cx="130" cy="25" r="4" stroke="#F5D540" fill="#151D2A" strokeWidth="1" />
+        <circle cx="295" cy="30" r="4" stroke="#F5D540" fill="#151D2A" strokeWidth="1" />
+        <circle cx="455" cy="20" r="4" stroke="#F5D540" fill="#151D2A" strokeWidth="1" />
+        <circle cx="610" cy="15" r="4" stroke="#F5D540" fill="#151D2A" strokeWidth="1" />
       </svg>
       <div className={styles.times}>
         <p className={styles.time}>Now</p>
