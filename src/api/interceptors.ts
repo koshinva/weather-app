@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CURRENT_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
+const CURRENT_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 const GEOCODING_API = 'http://api.openweathermap.org/geo/1.0/direct';
 const API_ID = 'bb259ca2b16c9a38f7545f8a8dc4f682';
 

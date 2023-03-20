@@ -23,8 +23,8 @@ const Navbar: FC = () => {
       </div>
       <div className={styles.geo}>
         <FaMapMarkerAlt />
-        <h2 className={styles.city}>{currentWeather?.name},</h2>
-        <p className={styles.country}>{currentWeather?.sys.country}</p>
+        <h2 className={styles.city}>{currentWeather?.city.name},</h2>
+        <p className={styles.country}>{currentWeather?.city.country}</p>
         <button
           className={cn(styles.button, { [styles.active]: isOpenSearch })}
           type="button"
