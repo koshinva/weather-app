@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { axiosCurrentWeather, axiosGeoCoding } from 'api/interceptors';
+import { TypeRootState } from 'store';
 import { IGeocoding, IResponseGetGeo, IWeatherResponse } from 'types';
 
 export const getGeocoding = createAsyncThunk<IGeocoding[], string>(
@@ -21,42 +22,16 @@ export const getGeocoding = createAsyncThunk<IGeocoding[], string>(
   }
 );
 
-export const getWeather = createAsyncThunk<IWeatherResponse, string>(
-  'weather/weather',
-  async function (location, { rejectWithValue }) {
+export const getWeather = createAsyncThunk<IWeatherResponse>(
+  'weather/currentWeather',
+  async function (_, { rejectWithValue, getState }) {
     try {
-      const response = await axiosCurrentWeather.get('', { params: { q: location } });
+      const geocoding = (getState() as TypeRootState).weather.selectedGeocoding;
+      
+      const response = await axiosCurrentWeather.get('', { params: { lat: geocoding?.lat, lon: geocoding?.lon } });
+      
+      return response.data;
 
-      const {
-        name,
-        sys: { country },
-        weather,
-        main: { temp, pressure, temp_min, temp_max, humidity },
-        wind: { speed: windSpeed },
-        timezone,
-        clouds: { all: clouds },
-      } = response.data;
-
-      const { main, description } = weather[0];
-
-      const data = {
-        name,
-        country,
-        temp,
-        pressure,
-        temp_min,
-        temp_max,
-        humidity,
-        windSpeed,
-        main,
-        description,
-        timezone,
-        clouds,
-      };
-
-      console.log(data);
-
-      return data;
     } catch (error) {
       return rejectWithValue('error');
     }

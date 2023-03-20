@@ -1,14 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IInitialState } from 'types';
+import { IInitialState, IWeatherResponse } from 'types';
 import { getGeocoding, getWeather } from './weatherActions';
 
 const initialState: IInitialState = {
   geocodingList: [],
-  selectedGeocoding: null,
-  currentCity: '',
-  currentCountry: '',
+  selectedGeocoding: { name: 'Moscow', country: 'RU', lat: 55.7504461, lon: 37.6174943 },
   currentWeather: null,
-  date: null,
   isLoading: false,
   error: null,
 };
@@ -20,6 +17,9 @@ const weatherSlice = createSlice({
     selectGeocoding(state, { payload }) {
       state.selectedGeocoding = payload;
     },
+    clearGeocodingList(state) {
+      state.geocodingList = [];
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -37,24 +37,9 @@ const weatherSlice = createSlice({
       .addCase(getWeather.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getWeather.fulfilled, (state, { payload }) => {
+      .addCase(getWeather.fulfilled, (state, { payload }: { payload: IWeatherResponse }) => {
         state.isLoading = false;
-        const { name, country, ...weather } = payload;
-        state.currentCity = name;
-        state.currentCountry = country;
-        state.currentWeather = {
-          ...weather,
-          description: weather.description.slice(0, 1).toUpperCase() + weather.description.slice(1),
-        };
-        let date = new Date();
-        const currentTimezoneOffset = date.getTimezoneOffset();
-        date.setMinutes(date.getMinutes() - currentTimezoneOffset);
-        date.setSeconds(date.getSeconds() - payload.timezone);
-        state.date = date.toLocaleDateString('en-US', {
-          weekday: 'short',
-          day: 'numeric',
-          month: 'long',
-        });
+        state.currentWeather = payload;
       })
       .addCase(getWeather.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -63,6 +48,6 @@ const weatherSlice = createSlice({
   },
 });
 
-export const { selectGeocoding } = weatherSlice.actions;
+export const { selectGeocoding, clearGeocodingList } = weatherSlice.actions;
 
 export default weatherSlice.reducer;

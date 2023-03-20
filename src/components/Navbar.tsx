@@ -2,16 +2,15 @@ import { FC, useState } from 'react';
 import cn from 'classnames';
 import { FaSun, FaCloud, FaAngleDown, FaMoon, FaMapMarkerAlt } from 'react-icons/fa';
 
-import { useTypedSelector } from 'hooks/useTypedSelector';
-
 import Search from './Search';
 
 import styles from './Navbar.module.scss';
+import { useTypedSelector } from 'hooks/useTypedSelector';
 
 const Navbar: FC = () => {
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
   const [isOpenSearch, setOpenSearch] = useState<boolean>(false);
-  const { currentCity, currentCountry } = useTypedSelector((state) => state.weather);
+  const { currentWeather } = useTypedSelector((state) => state.weather);
 
   const handleChangeTheme = () => {
     setDarkTheme((prev) => !prev);
@@ -24,8 +23,8 @@ const Navbar: FC = () => {
       </div>
       <div className={styles.geo}>
         <FaMapMarkerAlt />
-        <h2 className={styles.city}>{currentCity},</h2>
-        <p className={styles.country}>{currentCountry}</p>
+        <h2 className={styles.city}>{currentWeather?.name},</h2>
+        <p className={styles.country}>{currentWeather?.sys.country}</p>
         <button
           className={cn(styles.button, { [styles.active]: isOpenSearch })}
           type="button"
@@ -34,8 +33,7 @@ const Navbar: FC = () => {
           <FaAngleDown />
         </button>
 
-        <Search isOpenSearch={isOpenSearch} />
-
+        <Search isOpenSearch={isOpenSearch} setOpenSearch={setOpenSearch} />
       </div>
       <div className={styles.toggleTheme}>
         <label className={cn(styles.label, { [styles.active]: darkTheme })}>

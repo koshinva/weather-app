@@ -10,11 +10,11 @@ import NextFourHours from './NextFourHours';
 import styles from './Weather.module.scss';
 
 const Weather: FC = () => {
-  const {isLoading, currentWeather} = useTypedSelector((state) => state.weather)
+  const { isLoading, currentWeather } = useTypedSelector((state) => state.weather);
   const { getWeather } = useActions();
 
   useEffect(() => {
-    getWeather('Moscow');
+    getWeather();
   }, []);
 
   return (

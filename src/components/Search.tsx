@@ -12,12 +12,13 @@ import { IGeocoding } from 'types';
 
 interface ISearchProps {
   isOpenSearch: boolean;
+  setOpenSearch: (value: React.SetStateAction<boolean>) => void;
 }
 
-const Search: FC<ISearchProps> = ({ isOpenSearch }) => {
+const Search: FC<ISearchProps> = ({ isOpenSearch, setOpenSearch }) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const { getGeocoding, selectGeocoding } = useActions();
+  const { getGeocoding, selectGeocoding, getWeather, clearGeocodingList } = useActions();
   const { geocodingList } = useTypedSelector((state) => state.weather);
 
   const debouncedSearch = useDebounce(searchTerm, 500);
@@ -26,9 +27,17 @@ const Search: FC<ISearchProps> = ({ isOpenSearch }) => {
     const { value } = event.target;
     setSearchTerm(value);
   };
-  const handleClickGeocoding = (geo: IGeocoding) => {    
-    selectGeocoding(geo)
-    setSearchTerm(`${geo.name}, ${geo.country}`)
+  const handleClickGeocoding = (geo: IGeocoding) => {
+    selectGeocoding(geo);
+    setSearchTerm(`${geo.name}, ${geo.country}`);
+    clearGeocodingList();
+  };
+  const handleSubmitSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    getWeather();
+    setOpenSearch((prev) => !prev);
+    clearGeocodingList();
+    setSearchTerm('');
   };
 
   useEffect(() => {
@@ -38,7 +47,10 @@ const Search: FC<ISearchProps> = ({ isOpenSearch }) => {
   }, [debouncedSearch, getGeocoding]);
 
   return (
-    <form className={cn(styles.form, { [styles.active]: isOpenSearch })}>
+    <form
+      className={cn(styles.form, { [styles.active]: isOpenSearch })}
+      onSubmit={handleSubmitSearch}
+    >
       <button type="submit">
         <FaSearch />
       </button>
@@ -48,10 +60,11 @@ const Search: FC<ISearchProps> = ({ isOpenSearch }) => {
         name="search"
         id="search"
         placeholder="Search city..."
+        autoComplete="off"
         value={searchTerm}
         onChange={handleChangeSearchInput}
       />
-      {geocodingList.length ? (
+      {geocodingList.length && searchTerm ? (
         <ul className={styles.list}>
           {geocodingList.map((geo) => (
             <li className={styles.item} key={geo.lat}>
