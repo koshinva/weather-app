@@ -1,0 +1,24 @@
+.list-weather {
+  > .list {
+    @apply flex items-center justify-around mt-10;
+
+    > .item {
+      @apply bg-borderColor border border-middleBlue shadow-sm shadow-borderColor rounded-lg px-4 py-2 min-w-[20%] text-white flex flex-col items-center;
+
+      > .day {
+        @apply font-bold;
+      }
+      > .description {
+        @apply text-sm text-gray;
+      }
+
+      > .image-status {
+        @apply w-16 h-16 block;
+      }
+
+      > .minmax {
+        @apply flex justify-evenly w-full;
+      }
+    }
+  }
+}

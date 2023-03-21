@@ -8,7 +8,7 @@ import styles from './Tomorrow.module.scss'
 const Tomorrow: FC = () => {
   const {currentWeather} = useTypedSelector(state => state.weather);
 
-  const tomorrowWeather = currentWeather?.list[7];
+  const tomorrowWeather = currentWeather?.list[4];
 
   return (
     <div className={styles.tomorrow}>
