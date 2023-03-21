@@ -1,16 +1,19 @@
 import { FC, useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import cn from 'classnames';
-import { FaSun, FaCloud, FaAngleDown, FaMoon, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaSun, FaAngleDown, FaMoon, FaMapMarkerAlt } from 'react-icons/fa';
 
 import Search from './Search';
 
 import styles from './Navbar.module.scss';
 import { useTypedSelector } from 'hooks/useTypedSelector';
+import Icon from './ui/Icon';
 
 const Navbar: FC = () => {
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
   const [isOpenSearch, setOpenSearch] = useState<boolean>(false);
   const { currentWeather } = useTypedSelector((state) => state.weather);
+  const { pathname } = useLocation();
 
   const handleChangeTheme = () => {
     setDarkTheme((prev) => !prev);
@@ -19,21 +22,37 @@ const Navbar: FC = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <FaCloud />
+        {pathname === '/' ? (
+          <Icon icon="FaCloud" />
+        ) : (
+          <Link className={styles.link} to="/">
+            <Icon icon="FaChevronLeft" />
+          </Link>
+        )}
       </div>
-      <div className={styles.geo}>
-        <FaMapMarkerAlt />
-        <h2 className={styles.city}>{currentWeather?.city.name},</h2>
-        <p className={styles.country}>{currentWeather?.city.country}</p>
-        <button
-          className={cn(styles.button, { [styles.active]: isOpenSearch })}
-          type="button"
-          onClick={() => setOpenSearch((prev) => !prev)}
-        >
-          <FaAngleDown />
-        </button>
 
-        <Search isOpenSearch={isOpenSearch} setOpenSearch={setOpenSearch} />
+      <div className={styles.geo}>
+        {pathname === '/' ? (
+          <>
+            <Icon icon="FaMapMarkerAlt" />
+            <h2 className={styles.city}>{currentWeather?.city.name},</h2>
+            <p className={styles.country}>{currentWeather?.city.country}</p>
+            <button
+              className={cn(styles.button, { [styles.active]: isOpenSearch })}
+              type="button"
+              onClick={() => setOpenSearch((prev) => !prev)}
+            >
+              <FaAngleDown />
+            </button>
+
+            <Search isOpenSearch={isOpenSearch} setOpenSearch={setOpenSearch} />
+          </>
+        ) : (
+          <>
+            <Icon icon='FaRegCalendarAlt' />
+            <h2 className={styles.title}>Next 5 Days</h2>
+          </>
+        )}
       </div>
       <div className={styles.toggleTheme}>
         <label className={cn(styles.label, { [styles.active]: darkTheme })}>
