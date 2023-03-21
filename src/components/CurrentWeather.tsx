@@ -7,6 +7,7 @@ import BlockWeather from './BlockWeather';
 
 import styles from './CurrentWeather.module.scss';
 import { convertDate } from 'utils/convertDate.helpers';
+import { getImageSrc } from 'utils';
 
 
 
@@ -25,7 +26,7 @@ const CurrentWeather: FC = () => {
 
         <img
           className={styles['image-status']}
-          src={`http://openweathermap.org/img/wn/${today?.weather[0].icon}@2x.png`}
+          src={getImageSrc(today?.weather[0].icon!!)}
           alt="icon weather"
         />
 

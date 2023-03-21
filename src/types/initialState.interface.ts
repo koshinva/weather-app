@@ -6,10 +6,12 @@ interface ILoading {
   geocoding: boolean;
 }
 
+
 export interface IInitialState {
   geocodingList: IGeocoding[];
   selectedGeocoding: IGeocoding | null;
   currentWeather: IWeatherResponse | null;
+  svgCoordinates: number[];
   isLoading: ILoading;
   error: any;
 }

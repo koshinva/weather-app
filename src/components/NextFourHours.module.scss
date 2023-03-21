@@ -7,8 +7,8 @@
     > .block {
       @apply flex flex-col items-center;
 
-      > .icon {
-        @apply w-6 h-6 mb-2;
+      > .image {
+        @apply w-10 h-10 mb-2 shadow-md rounded-full shadow-middleBlue;
       }
       > .temperature {
         @apply text-gray mb-1;

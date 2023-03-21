@@ -6,6 +6,7 @@ const initialState: IInitialState = {
   geocodingList: [],
   selectedGeocoding: { name: 'Moscow', country: 'RU', lat: 55.7504461, lon: 37.6174943 },
   currentWeather: null,
+  svgCoordinates: [30, 30, 30, 30],
   isLoading: { geocoding: false, weather: false },
   error: null,
 };
@@ -19,6 +20,13 @@ const weatherSlice = createSlice({
     },
     clearGeocodingList(state) {
       state.geocodingList = [];
+    },
+    setSvgCoordinates(state, { payload }: { payload: number[] }) {
+      const minNum = Math.min(...payload);
+      const convertPayload = (elem: number) => {
+        return 10 + (elem - minNum) * 5;
+      };
+      state.svgCoordinates = [...payload.map((item) => convertPayload(item))];
     },
   },
   extraReducers: (builder) => {
@@ -48,6 +56,6 @@ const weatherSlice = createSlice({
   },
 });
 
-export const { selectGeocoding, clearGeocodingList } = weatherSlice.actions;
+export const { selectGeocoding, clearGeocodingList, setSvgCoordinates } = weatherSlice.actions;
 
 export default weatherSlice.reducer;
