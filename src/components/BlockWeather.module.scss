@@ -1,0 +1,21 @@
+.block {
+  @apply flex flex-col items-center;
+
+  > svg {
+    @apply w-7 h-7 mb-2;
+  }
+  > .index {
+    @apply text-sm;
+  }
+  > .title {
+    @apply text-xs text-gray;
+  }
+
+  &.up-level {
+
+    > svg {
+      @apply stroke-yellow;
+    }
+
+  }
+}
