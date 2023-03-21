@@ -1,5 +1,5 @@
 export const convertDate = (date: number, type?: 'H:M' | 'W,MD') => {
-  const currentDate = new Date(date * 1000);
+  const currentDate: Date = new Date(date * 1000);
   if (type === 'H:M') {
     return `${currentDate.getHours()}:${String(currentDate.getMinutes()).padStart(2, '0')}`;
   }
