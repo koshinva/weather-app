@@ -1,17 +1,15 @@
+import { useEffect, FC } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 import { useActions } from 'hooks/useActions';
-import { useTypedSelector } from 'hooks/useTypedSelector';
-import { useEffect } from 'react';
-import { FC } from 'react';
-import CurrentWeather from './CurrentWeather';
-import Date from './Date';
-import Loader from './Loader';
-import Navbar from './Navbar';
-import NextFourHours from './NextFourHours';
+
+import Main from './Main';
+import Layout from './Layout';
+import NextDays from './NextDays';
 
 import styles from './Weather.module.scss';
 
 const Weather: FC = () => {
-  const { isLoading, currentWeather } = useTypedSelector((state) => state.weather);
   const { getWeather } = useActions();
 
   useEffect(() => {
@@ -20,15 +18,12 @@ const Weather: FC = () => {
 
   return (
     <div className={styles.weather}>
-      <Navbar />
-      {isLoading.weather && <Loader />}
-      {currentWeather && (
-        <>
-          <Date />
-          <CurrentWeather />
-          <NextFourHours />
-        </>
-      )}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path="/next-days" element={<NextDays />} />
+        </Route>
+      </Routes>
     </div>
   );
 };

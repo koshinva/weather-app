@@ -1,0 +1,16 @@
+.navigation {
+  @apply relative flex items-center justify-between text-white mt-3;
+
+  &::after {
+    @apply absolute top-[120%] w-full left-0 h-[1px] bg-borderColor;
+    content: '';
+  }
+
+  > .today {
+    @apply font-bold text-yellow;
+  }
+
+  > .link {
+    @apply text-sm text-gray hover:text-white hover:font-semibold transition-colors;
+  }
+}
