@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import cn from 'classnames';
-import { FaSun, FaAngleDown, FaMoon, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaSun, FaAngleDown, FaMoon } from 'react-icons/fa';
 
 import Search from './Search';
 

@@ -1,7 +1,12 @@
-import { FC } from 'react'
+import { FC } from 'react';
+import Tomorrow from './Tomorrow';
 
 const NextDays: FC = () => {
-  return <div>NextDays</div>
-}
+  return (
+    <>
+      <Tomorrow />
+    </>
+  );
+};
 
-export default NextDays
+export default NextDays;

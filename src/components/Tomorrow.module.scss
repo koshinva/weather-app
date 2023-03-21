@@ -1,0 +1,29 @@
+.tomorrow {
+  @apply bg-middleBlue border border-borderColor shadow-lg p-3 w-full my-3 rounded-3xl;
+
+  > .main {
+    @apply flex items-center justify-center mb-6;
+
+    > .image-status {
+      @apply w-20 h-20 mr-10;
+    }
+
+    > .status {
+      @apply text-center text-white;
+
+      > .title {
+        @apply font-medium text-2xl text-yellow;
+      }
+      > .temperature {
+        @apply font-bold text-5xl ;
+      }
+      > .description {
+        @apply text-gray;
+      }
+    }
+  }
+
+  > .details {
+    @apply flex justify-evenly items-center text-white;
+  }
+}
