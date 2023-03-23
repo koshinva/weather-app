@@ -24,7 +24,7 @@ const weatherSlice = createSlice({
     setSvgCoordinates(state, { payload }: { payload: number[] }) {
       const minNum = Math.min(...payload);
       const convertPayload = (elem: number) => {
-        return 10 + (elem - minNum) * 5;
+        return 50 - (elem - minNum) * 5;
       };
       state.svgCoordinates = [...payload.map((item) => convertPayload(item))];
     },
