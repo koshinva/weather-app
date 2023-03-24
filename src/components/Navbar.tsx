@@ -1,23 +1,21 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import cn from 'classnames';
-import { FaSun, FaAngleDown, FaMoon } from 'react-icons/fa';
 
+import { useActions } from 'hooks/useActions';
+import { FaSun, FaAngleDown, FaMoon } from 'react-icons/fa';
+import { useTypedSelector } from 'hooks/useTypedSelector';
+
+import Icon from './ui/Icon';
 import Search from './Search';
 
 import styles from './Navbar.module.scss';
-import { useTypedSelector } from 'hooks/useTypedSelector';
-import Icon from './ui/Icon';
 
 const Navbar: FC = () => {
-  const [darkTheme, setDarkTheme] = useState<boolean>(true);
-  const [isOpenSearch, setOpenSearch] = useState<boolean>(false);
   const { currentWeather } = useTypedSelector((state) => state.weather);
+  const {isOpenSearch, isDarkTheme} = useTypedSelector((state) => state.app);
+  const {toggleOpenSearch, toggleDarkTheme } = useActions();
   const { pathname } = useLocation();
-
-  const handleChangeTheme = () => {
-    setDarkTheme((prev) => !prev);
-  };
 
   return (
     <div className={styles.navbar}>
@@ -40,30 +38,30 @@ const Navbar: FC = () => {
             <button
               className={cn(styles.button, { [styles.active]: isOpenSearch })}
               type="button"
-              onClick={() => setOpenSearch((prev) => !prev)}
+              onClick={() => toggleOpenSearch()}
             >
               <FaAngleDown />
             </button>
 
-            <Search isOpenSearch={isOpenSearch} setOpenSearch={setOpenSearch} />
+            <Search />
           </>
         ) : (
           <>
-            <Icon icon='FaRegCalendarAlt' />
+            <Icon icon="FaRegCalendarAlt" />
             <h2 className={styles.title}>Next 5 Days</h2>
           </>
         )}
       </div>
       <div className={styles.toggleTheme}>
-        <label className={cn(styles.label, { [styles.active]: darkTheme })}>
-          <FaSun fill={!darkTheme ? '#FDFDFD' : '#7C7F85'} />
-          <FaMoon fill={darkTheme ? '#FDFDFD' : '#7C7F85'} />
+        <label className={cn(styles.label, { [styles.active]: isDarkTheme })}>
+          <FaSun fill={!isDarkTheme ? '#FDFDFD' : '#7C7F85'} />
+          <FaMoon fill={isDarkTheme ? '#FDFDFD' : '#7C7F85'} />
           <input
             type="checkbox"
             name="theme"
             id="theme"
-            onChange={handleChangeTheme}
-            checked={darkTheme}
+            onChange={() => toggleDarkTheme()}
+            checked={isDarkTheme}
           />
         </label>
       </div>

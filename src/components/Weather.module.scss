@@ -1,3 +1,8 @@
 .weather {
-  @apply min-h-[600px] w-[800px] max-w-full bg-dargBlue rounded-[44px] shadow-2xl p-6 relative;
+  @apply min-h-[600px] w-[800px] max-w-full bg-dargBlue rounded-[44px] shadow-2xl p-5 sm:p-6 relative;
+
+  &.veil::after {
+    @apply absolute top-0 left-0 bottom-0 right-0 bg-white bg-opacity-20 rounded-[44px] md:hidden;
+    content: '';
+  }
 }

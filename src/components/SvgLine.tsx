@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { FC } from 'react';
 import { roundNum } from 'utils';
 
+import styles from './SvgLine.module.scss'
+
 const SvgLine: FC = () => {
   const { svgCoordinates, currentWeather } = useTypedSelector((state) => state.weather);
   const {setSvgCoordinates} = useActions();
@@ -17,7 +19,7 @@ const SvgLine: FC = () => {
   }, [currentWeather, setSvgCoordinates]);
   
   return (
-    <svg width="752" height="60">
+    <svg className={styles.line}>
       <path
         d={`M0 30 130 ${svgCoordinates[0]}, 295 ${svgCoordinates[1]}, 455 ${svgCoordinates[2]}, 610 ${svgCoordinates[3]}, 752 30`}
         stroke="#7C7F85"

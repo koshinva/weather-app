@@ -1,5 +1,5 @@
 .current {
-  @apply bg-middleBlue px-8 py-6 w-full rounded-xl shadow-2xl border border-borderColor flex flex-col justify-between items-center text-white;
+  @apply bg-middleBlue px-6 sm:px-8 py-4 sm:py-6 w-full rounded-xl shadow-2xl border border-borderColor flex flex-col justify-between items-center text-white;
 
   > .status {
     @apply mb-3 text-sm text-gray;
@@ -15,7 +15,7 @@
     @apply text-sm mb-8;
   }
   > .details {
-    @apply flex items-center justify-around place-self-stretch;
+    @apply flex items-center justify-between sm:justify-around place-self-stretch;
     
     &.top-details {
       @apply justify-between;

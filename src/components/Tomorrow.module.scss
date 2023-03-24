@@ -1,5 +1,5 @@
 .tomorrow {
-  @apply bg-middleBlue border border-borderColor shadow-lg p-3 w-full my-3 rounded-3xl;
+  @apply bg-middleBlue border border-borderColor shadow-lg p-3 w-full my-5 sm:my-3 rounded-3xl;
 
   > .main {
     @apply flex items-center justify-center mb-6;
@@ -9,16 +9,16 @@
     }
 
     > .status {
-      @apply text-center text-white;
+      @apply text-right sm:text-center text-white;
 
       > .title {
-        @apply font-medium text-2xl text-yellow;
+        @apply font-medium text-xl mb-1 sm:mb-0 sm:text-2xl text-yellow;
       }
       > .temperature {
-        @apply font-bold text-5xl ;
+        @apply font-bold text-5xl;
       }
       > .description {
-        @apply text-gray;
+        @apply text-gray text-sm;
       }
     }
   }

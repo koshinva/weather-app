@@ -1,5 +1,5 @@
 .navigation {
-  @apply relative flex items-center justify-between text-white mt-3;
+  @apply relative flex items-center justify-between text-white mt-5 sm:mt-3;
 
   &::after {
     @apply absolute top-[120%] w-full left-0 h-[1px] bg-borderColor;

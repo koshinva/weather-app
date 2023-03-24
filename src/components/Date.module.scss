@@ -1,5 +1,5 @@
 .date {
-  @apply flex flex-col mt-10 mb-3 items-center text-white;
+  @apply flex flex-col mt-5 sm:mt-10 mb-3 items-center text-white;
 
   > .day {
     @apply font-bold text-lg mb-1;

@@ -1,25 +1,19 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import cn from 'classnames';
 
-import styles from './Search.module.scss';
-import { useState } from 'react';
 import { useActions } from 'hooks/useActions';
 import { useDebounce } from 'hooks/useDebounce';
-import { useEffect } from 'react';
 import { useTypedSelector } from 'hooks/useTypedSelector';
 import { IGeocoding } from 'types';
 
-interface ISearchProps {
-  isOpenSearch: boolean;
-  setOpenSearch: (value: React.SetStateAction<boolean>) => void;
-}
+import styles from './Search.module.scss';
 
-const Search: FC<ISearchProps> = ({ isOpenSearch, setOpenSearch }) => {
+const Search: FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-
-  const { getGeocoding, selectGeocoding, getWeather, clearGeocodingList } = useActions();
+  const { getGeocoding, selectGeocoding, getWeather, clearGeocodingList, toggleOpenSearch } = useActions();
   const { geocodingList, isLoading } = useTypedSelector((state) => state.weather);
+  const { isOpenSearch } = useTypedSelector((state) => state.app);
 
   const debouncedSearch = useDebounce(searchTerm, 500);
 
@@ -35,7 +29,7 @@ const Search: FC<ISearchProps> = ({ isOpenSearch, setOpenSearch }) => {
   const handleSubmitSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     getWeather();
-    setOpenSearch((prev) => !prev);
+    toggleOpenSearch();
     clearGeocodingList();
     setSearchTerm('');
   };

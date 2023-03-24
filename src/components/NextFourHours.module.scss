@@ -2,7 +2,7 @@
   @apply my-4 text-white;
   
   > .blocks {
-    @apply flex items-center justify-evenly;
+    @apply flex items-center justify-evenly mb-3 min-[840px]:mb-0;
 
     > .block {
       @apply flex flex-col items-center;

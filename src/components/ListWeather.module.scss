@@ -1,23 +1,24 @@
 .list-weather {
   > .list {
-    @apply flex items-center justify-around mt-10;
+    @apply flex items-center justify-around mt-5 sm:mt-10 flex-wrap gap-2;
 
     > .item {
-      @apply bg-borderColor border border-middleBlue shadow-sm shadow-borderColor rounded-lg px-4 py-2 min-w-[20%] text-white flex flex-col items-center;
+      @apply bg-borderColor border border-middleBlue shadow-sm shadow-borderColor rounded-lg px-2 sm:px-4 py-2 self-stretch 
+      w-[120px] min-[400px]:w-[150px] text-white flex flex-col items-center;
 
       > .day {
         @apply font-bold;
       }
       > .description {
-        @apply text-sm text-gray;
+        @apply text-sm text-gray text-center;
       }
 
       > .image-status {
-        @apply w-16 h-16 block;
+        @apply w-16 h-16 block mt-auto;
       }
 
       > .minmax {
-        @apply flex justify-evenly w-full;
+        @apply flex justify-evenly w-full mt-auto;
       }
     }
   }
