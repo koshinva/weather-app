@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import cn from 'classnames';
+import {motion} from "framer-motion";
 
 import { useActions } from 'hooks/useActions';
 import { FaSun, FaAngleDown, FaMoon } from 'react-icons/fa';
@@ -10,6 +11,7 @@ import Icon from './ui/Icon';
 import Search from './Search';
 
 import styles from './Navbar.module.scss';
+import { divVariant2 } from 'utils/motion';
 
 const Navbar: FC = () => {
   const { currentWeather } = useTypedSelector((state) => state.weather);
@@ -18,7 +20,7 @@ const Navbar: FC = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className={styles.navbar}>
+    <motion.div className={styles.navbar} variants={divVariant2} initial='hidden' animate='visible'>
       <div className={styles.logo}>
         {pathname === '/' ? (
           <Icon icon="FaCloud" />
@@ -65,7 +67,7 @@ const Navbar: FC = () => {
           />
         </label>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

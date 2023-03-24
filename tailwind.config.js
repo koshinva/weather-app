@@ -1,5 +1,5 @@
 const colors = require('tailwindcss/colors');
-
+const plugin = require('tailwindcss/plugin');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -30,5 +30,16 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        '.gradient-1': {
+          background: 'linear-gradient(135deg, rgba(21,29,42,1) 0%, rgba(41,52,75,1) 100%)',
+        },
+        '.gradient-2': {
+          background: 'linear-gradient(135deg, rgb(95, 224, 253), rgb(218, 255, 247) 75%)',
+        },
+      });
+    }),
+  ],
 };

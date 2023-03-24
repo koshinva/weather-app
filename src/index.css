@@ -7,8 +7,4 @@
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  height: 100vh;
-  background: -webkit-linear-gradient(135deg, rgb(95, 224, 253), rgb(218, 255, 247) 75%);
-  background: -moz-linear-gradient(135deg, rgb(95, 224, 253), rgb(218, 255, 247) 75%);
-  background: linear-gradient(135deg, rgb(95, 224, 253), rgb(218, 255, 247) 75%);
 }

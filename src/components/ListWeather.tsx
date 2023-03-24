@@ -1,8 +1,10 @@
 import { useTypedSelector } from 'hooks/useTypedSelector';
 import { FC } from 'react';
+import { motion } from 'framer-motion';
 import { convertDate, getImageSrc, roundNum } from 'utils';
 
 import styles from './ListWeather.module.scss';
+import { divVariant3 } from 'utils/motion';
 
 const ListWeather: FC = () => {
   const { currentWeather } = useTypedSelector((state) => state.weather);
@@ -12,10 +14,16 @@ const ListWeather: FC = () => {
       <ul className={styles.list}>
         {currentWeather?.list
           .slice(4)
-          .filter((item, i) => i % 8 === 0)
+          .filter((_, i) => i % 8 === 0)
           .slice(1)
           .map((item) => (
-            <li className={styles.item} key={item.dt}>
+            <motion.li
+              className={styles.item}
+              key={item.dt}
+              variants={divVariant3}
+              initial='hidden'
+              animate='visible'
+            >
               <h4 className={styles.day}>{convertDate(item.dt)}</h4>
               <p className={styles.description}>{item.weather[0].description}</p>
               <img
@@ -27,7 +35,7 @@ const ListWeather: FC = () => {
                 <p>{roundNum(item.main.temp_min, 'floor')}&#xB0;</p>
                 <p>{roundNum(item.main.temp_max, 'ceil')}&#xB0;</p>
               </div>
-            </li>
+            </motion.li>
           ))}
       </ul>
     </div>

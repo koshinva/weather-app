@@ -1,14 +1,14 @@
 .block {
-  @apply flex flex-col items-center;
+  @apply text-center;
 
   > svg {
-    @apply w-7 h-7 mb-2;
+    @apply w-7 h-7 mb-2 mx-auto;
   }
   > .index {
     @apply text-sm;
   }
   > .title {
-    @apply text-xs text-gray;
+    @apply text-xs inline text-gray;
   }
 
   &.up-level {
