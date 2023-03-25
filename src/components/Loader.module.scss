@@ -18,56 +18,56 @@
         animation-delay: -0.036s;
 
         &:after {
-          @apply top-[63px] left-[63px];
+          @apply top-[63px] left-[63px] block;
         }
       }
       &:nth-child(2) {
         animation-delay: -0.072s;
 
         &:after {
-          @apply top-[68px] left-[56px];
+          @apply top-[68px] left-[56px] block;
         }
       }
       &:nth-child(3) {
         animation-delay: -0.108s;
 
         &:after {
-          @apply top-[71px] left-[48px];
+          @apply top-[71px] left-[48px] block;
         }
       }
       &:nth-child(4) {
         animation-delay: -0.144s;
 
         &:after {
-          @apply top-[72px] left-[40px];
+          @apply top-[72px] left-[40px] block;
         }
       }
       &:nth-child(5) {
         animation-delay: -0.18s;
 
         &:after {
-          @apply top-[71px] left-[32px];
+          @apply top-[71px] left-[32px] block;
         }
       }
       &:nth-child(6) {
         animation-delay: -0.216s;
 
         &:after {
-          @apply top-[68px] left-[24px];
+          @apply top-[68px] left-[24px] block;
         }
       }
       &:nth-child(7) {
         animation-delay: -0.252s;
 
         &:after {
-          @apply top-[63px] left-[17px];
+          @apply top-[63px] left-[17px] block;
         }
       }
       &:nth-child(8) {
         animation-delay: -0.288s;
 
         &:after {
-          @apply top-[56px] left-[12px];
+          @apply top-[56px] left-[12px] block;
         }
       }
     }

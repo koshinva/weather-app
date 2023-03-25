@@ -1,5 +1,5 @@
 .line {
-  @apply hidden min-[840px]:block w-[100%] h-[60px];
+  @apply min-[840px]:block w-[100%] h-[60px] hidden;
 
   > path {
     @apply fill-transparent stroke-2 stroke-gray;

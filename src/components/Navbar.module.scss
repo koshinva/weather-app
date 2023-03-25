@@ -101,7 +101,7 @@
         content: '';
       }
       &.active::after {
-        @apply translate-x-[30px];
+        transform: translateX(30px);
       }
 
       > input {
