@@ -9,7 +9,7 @@
     }
 
     > .status {
-      @apply text-right sm:text-center text-white;
+      @apply text-right sm:text-center;
 
       > .title {
         @apply font-medium text-xl mb-1 sm:mb-0 sm:text-2xl text-yellow;
@@ -24,6 +24,17 @@
   }
 
   > .details {
-    @apply flex justify-evenly items-center text-white;
+    @apply flex justify-evenly items-center;
+  }
+
+  &.light {
+    @apply bg-darkAquaBlue border-cyan-500;
+    > .main {
+      > .status {
+        > .title {
+          @apply text-lime-200;
+        }
+      }
+    }
   }
 }

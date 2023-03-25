@@ -7,7 +7,7 @@
     }
     > .link {
       @apply w-7 h-7 flex items-center justify-center bg-middleBlue border border-borderColor rounded-full transition-shadow;
-      
+
       > svg {
         @apply w-4 h-4 fill-gray transition-colors;
       }
@@ -31,7 +31,7 @@
 
     > .button {
       @apply z-10;
-      
+
       > svg {
         @apply fill-gray w-4 h-4 transition-all;
 
@@ -46,11 +46,49 @@
       }
     }
 
-    > .city, .title {
-      @apply font-medium text-sm sm:text-base text-white mx-2;
+    > .city,
+    .title {
+      @apply font-medium text-sm sm:text-base mx-2;
     }
     > .country {
       @apply text-gray mr-2 sm:mr-1;
+    }
+  }
+
+  &.light {
+    > .logo {
+      > svg {
+        @apply fill-darkYellow;
+      }
+
+      > .link {
+        @apply bg-darkYellow border-none;
+        > svg {
+          @apply fill-dargBlue;
+        }
+
+        &:hover {
+          > svg {
+            @apply fill-white;
+          }
+        }
+      }
+    }
+
+    > .geo {
+      > svg {
+        @apply fill-middleBlue;
+      }
+
+      > .country {
+        @apply text-darkGray;
+      }
+    }
+
+    > .toggleTheme {
+      > .label {
+        @apply bg-darkAquaBlue border-white;
+      }
     }
   }
 

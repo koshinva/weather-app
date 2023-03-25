@@ -1,5 +1,5 @@
 .current {
-  @apply  gradient-1 px-6 sm:px-8 py-4 sm:py-6 w-full rounded-xl shadow-2xl border border-borderColor flex flex-col justify-between items-center text-white;
+  @apply  gradient-1 px-6 sm:px-8 py-4 sm:py-6 w-full rounded-xl shadow-2xl border border-borderColor flex flex-col justify-between items-center;
 
   > .status {
     @apply mb-3 text-sm text-gray;
@@ -23,6 +23,15 @@
 
     > .image-status {
       @apply w-28 h-28;
+    }
+  }
+
+  &.light {
+    @apply border-lightBlue;
+    background: #04AEC4;
+
+    > .status {
+      @apply text-darkGray;
     }
   }
 }

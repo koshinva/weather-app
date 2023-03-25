@@ -11,9 +11,13 @@ module.exports = {
         transparent: colors.transparent,
         dargBlue: '#151D2A',
         middleBlue: '#1F283B',
+        lightBlue: '#05C3DD',
+        darkAquaBlue: '#04AEC4',
         yellow: '#F5D540',
+        darkYellow: '#DBA800',
         borderColor: '#232D3E',
         gray: '#7C7F85',
+        darkGray: '#63666A',
       },
       keyframes: {
         roller: {
@@ -38,6 +42,9 @@ module.exports = {
         },
         '.gradient-2': {
           background: 'linear-gradient(135deg, rgb(95, 224, 253), rgb(218, 255, 247) 75%)',
+        },
+        '.gradient-3': {
+          background: 'linear-gradient(180deg, rgba(4,174,196,1) 41%, rgba(253,253,253,1) 100%)',
         },
       });
     }),

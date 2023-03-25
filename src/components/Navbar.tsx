@@ -20,7 +20,7 @@ const Navbar: FC = () => {
   const { pathname } = useLocation();
 
   return (
-    <motion.div className={styles.navbar} variants={divVariant2} initial='hidden' animate='visible'>
+    <motion.div className={cn(styles.navbar, {[styles.light]: !isDarkTheme})} variants={divVariant2} initial='hidden' animate='visible'>
       <div className={styles.logo}>
         {pathname === '/' ? (
           <Icon icon="FaCloud" />

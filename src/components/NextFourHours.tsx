@@ -1,5 +1,6 @@
-import { useTypedSelector } from 'hooks/useTypedSelector';
 import { FC } from 'react';
+import cn from 'classnames';
+import { useTypedSelector } from 'hooks/useTypedSelector';
 import { convertDate, getImageSrc, roundNum } from 'utils';
 
 import styles from './NextFourHours.module.scss';
@@ -7,11 +8,12 @@ import SvgLine from './SvgLine';
 
 const NextFourHours: FC = () => {
   const { currentWeather } = useTypedSelector((state) => state.weather);
+  const { isDarkTheme } = useTypedSelector((state) => state.app);
 
   const slicedWeatherList = currentWeather?.list.slice(0, 4);
 
   return (
-    <div className={styles.next}>
+    <div className={cn(styles.next, { [styles.light]: !isDarkTheme })}>
       <div className={styles.blocks}>
         {slicedWeatherList?.map((item) => (
           <div className={styles.block} key={item.dt}>

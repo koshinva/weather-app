@@ -10,12 +10,13 @@ import { convertDate } from 'utils/convertDate.helpers';
 import { getImageSrc } from 'utils';
 
 
-
 const CurrentWeather: FC = () => {
   const { currentWeather } = useTypedSelector((state) => state.weather);
+  const { isDarkTheme } = useTypedSelector((state) => state.app);
+
   const today = currentWeather?.list[0];
   return (
-    <div className={styles.current}>
+    <div className={cn(styles.current, {[styles.light]: !isDarkTheme})}>
       <div className={cn(styles.details, styles['top-details'])}>
         <BlockWeather
           icon="FiSunrise"

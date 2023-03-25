@@ -1,3 +1,7 @@
 .app {
   @apply h-screen gradient-2 flex items-center justify-center p-3 md:p-5;
+
+  &.light {
+    @apply gradient-1;
+  }
 }

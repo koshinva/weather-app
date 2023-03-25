@@ -4,7 +4,7 @@
 
     > .item {
       @apply bg-borderColor border border-middleBlue shadow-sm shadow-borderColor rounded-lg px-2 sm:px-4 py-2 self-stretch 
-      w-[120px] min-[400px]:w-[150px] text-white flex flex-col items-center;
+      w-[120px] min-[400px]:w-[150px] flex flex-col items-center;
 
       > .day {
         @apply font-bold;
@@ -19,6 +19,17 @@
 
       > .minmax {
         @apply flex justify-evenly w-full mt-auto;
+      }
+    }
+  }
+  &.light {
+    > .list {
+      > .item {
+        @apply bg-darkAquaBlue border-cyan-500 shadow-gray;
+
+        > .description {
+          @apply text-darkGray;
+        }
       }
     }
   }

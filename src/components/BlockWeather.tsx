@@ -2,9 +2,11 @@ import { FC } from 'react';
 import { motion } from 'framer-motion';
 import cn from 'classnames';
 
-import { TypeIcon } from 'types/icon.type';
+import { useTypedSelector } from 'hooks/useTypedSelector';
 import Icon from './ui/Icon';
 import { divVariant, textVariant } from 'utils/motion';
+
+import { TypeIcon } from 'types/icon.type';
 
 import styles from './BlockWeather.module.scss';
 
@@ -16,9 +18,10 @@ interface IPropsBlock {
 }
 
 const BlockWeather: FC<IPropsBlock> = ({ icon, title, value, extraStyle }) => {
+  const { isDarkTheme } = useTypedSelector((state) => state.app);
   return (
     <motion.div
-      className={cn(styles.block, styles[extraStyle || ''])}
+      className={cn(styles.block, styles[extraStyle || ''], { [styles.light]: !isDarkTheme })}
       initial={'hidden'}
       animate={'visible'}
       variants={divVariant}

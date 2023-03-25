@@ -1,5 +1,5 @@
 .next {
-  @apply my-4 text-white;
+  @apply my-4;
   
   > .blocks {
     @apply flex items-center justify-evenly mb-3 min-[840px]:mb-0;
@@ -24,6 +24,16 @@
 
       &:first-child {
         @apply font-semibold;
+      }
+    }
+  }
+
+  &.light {
+    > .blocks {
+      > .block {
+        > .image {
+          @apply shadow-none;
+        }
       }
     }
   }

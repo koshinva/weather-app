@@ -1,17 +1,19 @@
+import { FC } from 'react';
+import cn from 'classnames';
 import { useTypedSelector } from 'hooks/useTypedSelector';
-import { FC } from 'react'
 import { getImageSrc, roundNum } from 'utils';
 import BlockWeather from './BlockWeather';
 
-import styles from './Tomorrow.module.scss'
+import styles from './Tomorrow.module.scss';
 
 const Tomorrow: FC = () => {
-  const {currentWeather} = useTypedSelector(state => state.weather);
+  const { currentWeather } = useTypedSelector((state) => state.weather);
+  const { isDarkTheme } = useTypedSelector((state) => state.app);
 
   const tomorrowWeather = currentWeather?.list[4];
 
   return (
-    <div className={styles.tomorrow}>
+    <div className={cn(styles.tomorrow, {[styles.light]: !isDarkTheme})}>
       <div className={styles.main}>
         <img
           className={styles['image-status']}
@@ -43,6 +45,6 @@ const Tomorrow: FC = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Tomorrow
+export default Tomorrow;

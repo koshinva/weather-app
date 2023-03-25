@@ -1,3 +1,19 @@
 .line {
   @apply hidden min-[840px]:block w-[100%] h-[60px];
+
+  > path {
+    @apply fill-transparent stroke-2 stroke-gray;
+  }
+  > circle {
+    @apply stroke-yellow fill-dargBlue stroke-1;
+  }
+
+  &.light {
+    > path {
+      @apply stroke-cyan-600;
+    }
+    > circle {
+      @apply stroke-darkYellow fill-lightBlue;
+    }
+  }
 }

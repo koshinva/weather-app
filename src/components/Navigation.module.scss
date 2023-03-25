@@ -1,5 +1,5 @@
 .navigation {
-  @apply relative flex items-center justify-between text-white mt-5 sm:mt-3;
+  @apply relative flex items-center justify-between mt-5 sm:mt-3;
 
   &::after {
     @apply absolute top-[120%] w-full left-0 h-[1px] bg-borderColor;
@@ -11,6 +11,21 @@
   }
 
   > .link {
-    @apply text-sm text-gray hover:text-white hover:font-semibold transition-colors;
+    @apply text-sm text-gray hover:text-white hover:scale-110 transition-all;
   }
+
+  &.light {
+    
+    &::after {
+      @apply bg-darkAquaBlue;
+    }
+
+   > .today {
+    @apply text-middleBlue;
+   } 
+   > .link {
+    @apply text-darkGray hover:text-white;
+   }
+  }
+
 }

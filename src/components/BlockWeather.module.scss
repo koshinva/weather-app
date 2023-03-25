@@ -18,4 +18,18 @@
     }
 
   }
+
+  &.light {
+    > svg {
+      @apply fill-cyan-900;
+    }
+    > .title {
+      @apply text-darkGray;
+    }
+  }
+  &.light.up-level {
+    > svg {
+      @apply fill-none stroke-lime-400;
+    }
+  }
 }

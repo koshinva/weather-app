@@ -13,14 +13,16 @@ import { useTypedSelector } from 'hooks/useTypedSelector';
 
 const Weather: FC = () => {
   const { getWeather } = useActions();
-  const { isOpenSearch } = useTypedSelector((state) => state.app);
+  const { isOpenSearch, isDarkTheme } = useTypedSelector((state) => state.app);
 
   useEffect(() => {
     getWeather();
   }, []);
 
   return (
-    <div className={cn(styles.weather, { [styles.veil]: isOpenSearch })}>
+    <div
+      className={cn(styles.weather, { [styles.veil]: isOpenSearch, [styles.light]: !isDarkTheme })}
+    >
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
