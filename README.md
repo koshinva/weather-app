@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+<h1 style="text-align: center">Weather App</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## Описание проекта
 
-In the project directory, you can run:
+Приложение, в котором можно узнать погоду в любом городе на данный момент и на 5 следующих дней.
 
-### `npm start`
+<img src="./src/assets/image/readme/screen-1.png" alt="screen 1 project" style="width:300px;">
+<img src="./src/assets/image/readme/screen-2.png" alt="screen 1 project" style="width:300px;">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Используемые технологии
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/></a><a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/></a> <a href="https://redux.js.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/> </a> <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a> <a href="https://sass-lang.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg" alt="sass" width="40" height="40"/> </a> 
 
-### `npm test`
+## Функциональность
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* 2 страницы - первая отображает погодн на данный момент и следующие 12 часов. Вторая - отображает погоду на следующие 5 дней.
+* при вводе текста в поиск выпадает список подходящих городов (происходит запрос на Open Api - `http://api.openweathermap.org/geo/1.0/direct`, частота запросов при введении оптимизирована с помощью хука useDebounce)
+* после выбора города и нажатия кнопки поиск отправляется запрос на `https://api.openweathermap.org/data/2.5/forecast`
+* отправка запросов происходит с помощью библиотеки `axios`
+* при работе используется state - менеджер `Redux Toolkit`
+* имеется возможность сменить тему приложения. По умолчанию стоит ночная тема.
+* адаптивная вёрстка
 
-### `npm run build`
+## Установка
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Клонировать репозиторий
+`git clone https://github.com/koshinva/weather-app.git`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Установить зависимости
+`npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Запустить локально на своей машине с помощью команды
+`npm run start`
 
-### `npm run eject`
+4. Перейти в браузер по ссылке  `http://localhost:3000/` 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Ссылки
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Демо** версия проекта доступна по **[ссылке](https://koshinva.github.io/weather-app/ 'https://koshinva.github.io/weather-app/')**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+📫 Задать вопрос по проекту 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<a href="https://t.me/imp_0593" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/Telegram-blue?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/> </a>

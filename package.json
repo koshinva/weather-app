@@ -1,5 +1,10 @@
 {
-  "name": "weather__app",
+  "name": "weather_app",
+  "author": {
+    "name": "Valery Koshin",
+    "email": "koshinva@yandex.ru"
+  },
+  "description": "Weather forecast app with weather display for the next 5 days and theme change",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
