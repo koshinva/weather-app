@@ -7,7 +7,7 @@
   "description": "Weather forecast app with weather display for the next 5 days and theme change",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://koshinva.github.io/weather-app/",
+  "homepage": "https://koshinva.github.io/weather-app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
