@@ -41,6 +41,7 @@ const SvgLine: FC = () => {
           r="4"
           variants={drawVariant}
           custom={index + 1}
+          key={`${index}-${xCoord}`}
         />
       ))}
     </motion.svg>
